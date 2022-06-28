@@ -1,15 +1,18 @@
 <script context="module">
+	import { API_KEY } from '$lib/env';
 	import Container from '../../components/ui/Container.svelte';
-	function getSession() {
-		return {
-			API_KEY: import.meta.env.VITE_API_KEY
-		};
+	let myApiKey;
+
+	if (process.env.NODE_ENV === 'production') {
+		// For production
+		myApiKey = process.env.API_KEY;
+	} else {
+		// For development
+		myApiKey = API_KEY;
 	}
 	// @ts-ignore
 	export async function load({ fetch, params }) {
-		const res = await fetch(
-			`https://api.themoviedb.org/3/movie/${params.id}?api_key=${getSession().API_KEY}`
-		);
+		const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${myApiKey}`);
 		// const res = await fetch(`./dummy_data.json`);
 		const movie = await res.json();
 		if (res.ok) {

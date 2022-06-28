@@ -1,11 +1,7 @@
-<script>
+<script context="module">
+	import { API_KEY } from '$lib/env';
 	import Layout from '../components/ui/Layout.svelte';
 	import MovieList from '../components/ui/MovieList.svelte';
-	export function getSession() {
-		return {
-			API_KEY: import.meta.env.VITE_API_KEY
-		};
-	}
 
 	/**
 	 * @param {string} link

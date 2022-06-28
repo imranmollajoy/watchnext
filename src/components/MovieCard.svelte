@@ -44,16 +44,4 @@
 		cursor: pointer;
 		transform: scale(1.01);
 	}
-	.movie-card__info {
-		width: 100%;
-		height: 100%;
-		background-color: #fafafa;
-		z-index: 2;
-		padding: 1rem;
-	}
-	.movie-card__info h3 {
-		font-weight: bold;
-		margin: 0;
-		padding: 1rem;
-	}
 </style>

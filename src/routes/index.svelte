@@ -2,7 +2,13 @@
 	import { API_KEY } from '$lib/env';
 	import Layout from '../components/ui/Layout.svelte';
 	import MovieList from '../components/ui/MovieList.svelte';
-
+	if (process.env.NODE_ENV === 'production') {
+		// For production
+		myApiKey = process.env.API_KEY;
+	} else {
+		// For development
+		myApiKey = API_KEY;
+	}
 	/**
 	 * @param {string} link
 	 */
@@ -18,8 +24,12 @@
 			throw new Error('Something went wrong');
 		}
 	}
-	let popular = getMovieData('../popular.json');
-	let topRated = getMovieData(`../top_rated.json`);
+	let popular = getMovieData(
+		`https://api.themoviedb.org/3/movie/popular?api_key=${myApiKey}&language=en-US&page=1`
+	);
+	let topRated = getMovieData(
+		`https://api.themoviedb.org/3/movie/top_rated?api_key=${myApiKey}&language=en-US&page=1`
+	);
 </script>
 
 <Layout>

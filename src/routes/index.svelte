@@ -11,7 +11,7 @@
 		// For production
 		myApiKey = process.env.API_KEY;
 		links = {
-			trending: `https://api.themoviedb.org/3/movie/trending?api_key=${myApiKey}&language=en-US&page=1`,
+			trending: `https://api.themoviedb.org/3/trending/all/week?api_key=${myApiKey}&language=en-US&page=1`,
 			popular: `https://api.themoviedb.org/3/movie/popular?api_key=${myApiKey}&language=en-US&page=1`
 		};
 	} else {

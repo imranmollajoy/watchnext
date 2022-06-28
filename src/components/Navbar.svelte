@@ -3,18 +3,19 @@
 	const nav = [
 		{
 			title: 'Home',
-			path: '/',
-			isActive: true
+			path: '/'
 		},
 		{
 			title: 'Watchlist',
-			path: '/watchlist',
-			isActive: false
+			path: '/watchlist'
 		},
 		{
 			title: 'Favorites',
-			path: '/favorites',
-			isActive: false
+			path: '/favorites'
+		},
+		{
+			title: 'Seen',
+			path: '/watched'
 		}
 	];
 </script>
@@ -47,7 +48,7 @@
 		display: block;
 		color: #f2f2f2;
 		text-align: center;
-		padding: 14px 16px;
+		padding: 14px 8px;
 		text-decoration: none;
 		font-size: 17px;
 	}

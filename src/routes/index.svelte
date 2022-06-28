@@ -3,12 +3,24 @@
 	import Layout from '../components/ui/Layout.svelte';
 	import MovieList from '../components/ui/MovieList.svelte';
 	let myApiKey;
+	let links = {
+		trending: '',
+		popular: ''
+	};
 	if (process.env.NODE_ENV === 'production') {
 		// For production
 		myApiKey = process.env.API_KEY;
+		links = {
+			trending: `https://api.themoviedb.org/3/movie/trending?api_key=${myApiKey}&language=en-US&page=1`,
+			popular: `https://api.themoviedb.org/3/movie/popular?api_key=${myApiKey}&language=en-US&page=1`
+		};
 	} else {
 		// For development
 		myApiKey = API_KEY;
+		links = {
+			trending: '../top_rated.json',
+			popular: '../popular.json'
+		};
 	}
 	/**
 	 * @param {string} link
@@ -25,12 +37,8 @@
 			throw new Error('Something went wrong');
 		}
 	}
-	let popular = getMovieData(
-		`https://api.themoviedb.org/3/movie/popular?api_key=${myApiKey}&language=en-US&page=1`
-	);
-	let topRated = getMovieData(
-		`https://api.themoviedb.org/3/movie/top_rated?api_key=${myApiKey}&language=en-US&page=1`
-	);
+	let popular = getMovieData(links.popular);
+	let trending = getMovieData(links.trending);
 </script>
 
 <Layout>
@@ -44,10 +52,10 @@
 	{/await}
 
 	<!-- Top rated section -->
-	{#await topRated}
-		<p>...Loading Top rated movies</p>
+	{#await trending}
+		<p>...Loading Trending movies</p>
 	{:then data}
-		<MovieList {data} title="Top Rated Movies" />
+		<MovieList {data} title="Trending Movies" />
 	{:catch error}
 		<p style="color: red">{error.message}</p>
 	{/await}

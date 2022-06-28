@@ -56,7 +56,7 @@
 							<Button
 								on:click={() => {
 									addToWatchedList(movie);
-								}}>Watched</Button
+								}}>Seen</Button
 							>
 							<Button
 								type="secondary"

@@ -16,5 +16,6 @@
 </svelte:head>
 <div class="main">
 	<slot />
+	<div class="nav-fixer" />
 	<Navbar />
 </div>

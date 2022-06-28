@@ -36,6 +36,7 @@
 	export let movie;
 	let favoriteButtonText = 'Add to favorites';
 	let watchlistButtonText = 'Add to watchlist';
+	let isWatched = false;
 	function addToWatchList() {
 		const toAdd = {
 			id: movie.id,
@@ -102,13 +103,13 @@
 		}
 	}
 	onMount(() => {
+		isWatched = $Data.watched.find((item) => item.id === movie.id);
 		if ($Data?.watchlist?.find((item) => item.id === movie.id)) {
 			watchlistButtonText = 'Remove from watchlist';
 		}
 		if ($Data.favorites.find((item) => item.id === movie.id)) {
 			favoriteButtonText = 'Remove from favorite';
 		}
-		console.log(movie);
 	});
 </script>
 
@@ -133,11 +134,15 @@
 					<p>Popularity {movie.popularity.toFixed()}</p>
 				</div>
 			</div>
-			<Button
-				on:click={() => {
-					watchlistPressed();
-				}}>{watchlistButtonText}</Button
-			>
+			{#if !isWatched}
+				<Button
+					on:click={() => {
+						watchlistPressed();
+					}}>{watchlistButtonText}</Button
+				>
+			{:else}
+				<Button>Seen</Button>
+			{/if}
 			<Button
 				type="secondary"
 				on:click={() => {

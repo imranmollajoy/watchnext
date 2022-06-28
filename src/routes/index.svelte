@@ -2,6 +2,7 @@
 	import { API_KEY } from '$lib/env';
 	import Layout from '../components/ui/Layout.svelte';
 	import MovieList from '../components/ui/MovieList.svelte';
+	let myApiKey;
 	if (process.env.NODE_ENV === 'production') {
 		// For production
 		myApiKey = process.env.API_KEY;

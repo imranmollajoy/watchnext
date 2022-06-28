@@ -1,12 +1,35 @@
+<script context="module">
+	import Container from '../../components/ui/Container.svelte';
+	function getSession() {
+		return {
+			API_KEY: import.meta.env.VITE_API_KEY
+		};
+	}
+	// @ts-ignore
+	export async function load({ fetch, params }) {
+		const res = await fetch(
+			`https://api.themoviedb.org/3/movie/${params.id}?api_key=${getSession().API_KEY}`
+		);
+		// const res = await fetch(`./dummy_data.json`);
+		const movie = await res.json();
+		if (res.ok) {
+			return {
+				props: {
+					movie
+				}
+			};
+		} else {
+			throw new Error('Something went wrong');
+		}
+	}
+</script>
+
 <script>
 	// @ts-nocheck
-
-	import Container from '../../components/ui/Container.svelte';
 	import Button from '../../components/ui/Button.svelte';
 	import Layout from '../../components/ui/Layout.svelte';
 	import Data from '../../stores/PersistantData';
 	import { onMount } from 'svelte';
-
 	export let movie;
 	let favoriteButtonText = 'Add to favorites';
 	let watchlistButtonText = 'Add to watchlist';
@@ -83,28 +106,6 @@
 			favoriteButtonText = 'Remove from favorite';
 		}
 	});
-	function getSession() {
-		return {
-			API_KEY: import.meta.env.VITE_API_KEY
-		};
-	}
-	// @ts-ignore
-	export async function load({ fetch, params }) {
-		const res = await fetch(
-			`https://api.themoviedb.org/3/movie/${params.id}?api_key=${getSession().API_KEY}`
-		);
-		// const res = await fetch(`./dummy_data.json`);
-		const movie = await res.json();
-		if (res.ok) {
-			return {
-				props: {
-					movie
-				}
-			};
-		} else {
-			throw new Error('Something went wrong');
-		}
-	}
 </script>
 
 <Layout>

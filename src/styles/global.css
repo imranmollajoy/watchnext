@@ -6,10 +6,12 @@
 
 html {
 	font-size: 100%;
+	box-sizing: border-box;
 } /*16px*/
 body {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 .main {
 	font-family: 'Roboto', sans-serif;

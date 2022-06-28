@@ -105,6 +105,7 @@
 		if ($Data.favorites.find((item) => item.id === movie.id)) {
 			favoriteButtonText = 'Remove from favorite';
 		}
+		console.log(movie);
 	});
 </script>
 

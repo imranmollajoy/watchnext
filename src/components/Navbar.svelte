@@ -62,4 +62,10 @@
 		background-color: hsl(26, 100%, 60%);
 		color: white;
 	}
+	/* mobile query */
+	@media (max-width: 425px) {
+		.flex {
+			max-width: 100%;
+		}
+	}
 </style>

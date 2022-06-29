@@ -59,8 +59,8 @@
 	}
 
 	.navbar a.active {
-		background-color: hsl(26, 100%, 60%);
-		color: white;
+		background-color: var(--clr-white);
+		color: var(--clr-text);
 	}
 	/* mobile query */
 	@media (max-width: 425px) {

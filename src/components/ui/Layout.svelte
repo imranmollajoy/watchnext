@@ -1,4 +1,5 @@
 <script>
+	import { fly, fade } from 'svelte/transition';
 	import '../../styles/global.css';
 	import Data from '../../stores/PersistantData';
 	import { onMount } from 'svelte';
@@ -14,8 +15,18 @@
 <svelte:head>
 	<title>Watch Next</title>
 </svelte:head>
-<div class="main">
+<div
+	class="main"
+	in:fly={{
+		y: 100,
+		duration: 350,
+		delay: 350 + 100
+	}}
+	out:fade={{
+		duration: 350
+	}}
+>
 	<slot />
 	<div class="nav-fixer" />
-	<Navbar />
 </div>
+<Navbar />

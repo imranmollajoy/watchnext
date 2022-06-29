@@ -20,9 +20,9 @@
 		cursor: pointer;
 	}
 	.primary {
-		background-color: hsl(26, 100%, 60%);
-		color: #fff;
-		box-shadow: 0px 0px 15px 0px hsla(26, 66%, 48%, 0.541);
+		background-color: var(--clr-accent);
+		color: var(--clr-white);
+		box-shadow: 0px 0px 5px 0px hsla(26, 64%, 13%, 0.38);
 	}
 	.primary:hover {
 		background-color: hsl(0, 93%, 68%);

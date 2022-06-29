@@ -59,5 +59,34 @@
 	{:catch error}
 		<p style="color: red">{error.message}</p>
 	{/await}
+	<footer>
+		Made with <span class="red">♥</span> by
+		<a href="https://imranmollajoy.github.io">Imran Molla Joy</a>
+		<br />
+		Data from
+		<br />
+		<a href="https://www.themoviedb.org">
+			<img
+				src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg"
+				alt="The Movie Database"
+			/>
+		</a>
+	</footer>
 </Layout>
+
 <!-- test more -->
+<style>
+	footer {
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 1rem;
+		text-align: center;
+	}
+	footer a,
+	.red {
+		color: var(--clr-accent);
+	}
+	footer img {
+		max-width: 60%;
+	}
+</style>

@@ -19,6 +19,11 @@ body {
 	box-sizing: border-box;
 	background-color: var(--clr-white);
 	color: var(--clr-text);
+	/* unselectsble everyting */
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 .main {
 	font-family: 'Roboto', sans-serif;

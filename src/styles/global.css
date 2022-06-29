@@ -18,6 +18,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	background-color: var(--clr-white);
+	color: var(--clr-text);
 }
 .main {
 	font-family: 'Roboto', sans-serif;
@@ -41,7 +42,7 @@ h5 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 900;
 	line-height: normal;
-	color: var(--clr-text);
+	color: var(--clr-accent);
 }
 
 h1 {

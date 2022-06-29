@@ -14,10 +14,6 @@
 </div>
 
 <style>
-	h4 {
-		margin: 0;
-	}
-
 	.movie-card {
 		position: relative;
 		display: flex;
@@ -29,7 +25,6 @@
 		background-color: #fafafa;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.1);
-		margin: 0.3rem;
 	}
 
 	img {

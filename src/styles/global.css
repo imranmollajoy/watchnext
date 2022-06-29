@@ -18,6 +18,7 @@ body {
 	font-weight: 400;
 	background-color: azure;
 	min-height: 100vh;
+	margin: 0 auto;
 }
 .nav-fixer {
 	margin-bottom: 56px;

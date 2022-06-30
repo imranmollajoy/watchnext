@@ -31,6 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^1.0.0-next.34"
+		"@sveltejs/adapter-static": "^1.0.0-next.34",
+		"feather-icons": "^4.29.0"
 	}
 }

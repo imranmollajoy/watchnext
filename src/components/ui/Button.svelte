@@ -1,10 +1,18 @@
 <script>
+	//@ts-nocheck
+	import Icon from './Icon.svelte';
 	export let type = 'primary';
 	export let flat = false;
+	export let icon = '';
 </script>
 
 <button on:click on:focus on:mouseover on:mouseenter on:mouseleave class={type}>
-	<slot />
+	<div class="div content">
+		{#if icon}
+			<Icon name={icon} />
+		{/if}
+		<slot />
+	</div>
 </button>
 
 <style>
@@ -14,10 +22,17 @@
 		padding: 0.7rem 1rem;
 		transition: all 0.3s ease-in-out;
 		border-radius: 0.5rem;
-		margin-top: 4px;
+		margin: 0.3rem 0;
 	}
 	button:hover {
 		cursor: pointer;
+	}
+	.content {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		cursor: pointer;
+		gap: 0.5rem;
 	}
 	.primary {
 		background-color: var(--clr-accent);

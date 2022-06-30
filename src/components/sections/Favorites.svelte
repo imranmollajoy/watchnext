@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 	import Button from '../ui/Button.svelte';
 	import '../../styles/preferred-list.css';
+	import Icon from '../ui/Icon.svelte';
 
 	let favorites = [];
 	onMount(() => {
@@ -38,9 +39,9 @@
 							/>
 						</div>
 						<div class="details">
-							<h3>{movie.title}</h3>
-
+							<a href={`/movie/${movie.id}`}><h4>{movie.title}</h4></a>
 							<Button
+								icon="x"
 								type="secondary"
 								on:click={() => {
 									removeFromFavorites(movie);

@@ -3,12 +3,16 @@
 	import '../../styles/global.css';
 	import Data from '../../stores/PersistantData';
 	import { onMount } from 'svelte';
+	import { previousPath } from '$lib/paths';
+	import { page } from '$app/stores';
 	import Navbar from '../Navbar.svelte';
 
 	onMount(() => {
 		if ($Data.favorites === undefined) $Data.favorites = [];
 		if ($Data.watchlist === undefined) $Data.watchlist = [];
 		if ($Data.watched === undefined) $Data.watched = [];
+		if ($page.routeId !== 'movie/[id]') $previousPath = $page.url.pathname;
+		console.log($previousPath);
 	});
 </script>
 

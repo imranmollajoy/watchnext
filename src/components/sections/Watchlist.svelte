@@ -52,17 +52,20 @@
 							/>
 						</div>
 						<div class="details">
-							<h3>{movie.title}</h3>
+							<a href={`/movie/${movie.id}`}><h4>{movie.title}</h4></a>
+
 							<Button
+								icon="check"
 								on:click={() => {
 									addToWatchedList(movie);
-								}}>Seen</Button
+								}}>Done Watching</Button
 							>
 							<Button
+								icon="x"
 								type="secondary"
 								on:click={() => {
 									removeFromWatchlist(movie);
-								}}>Remove from watchlist</Button
+								}}>Remove</Button
 							>
 						</div>
 					</div>

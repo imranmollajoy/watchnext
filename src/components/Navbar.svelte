@@ -1,13 +1,22 @@
 <script>
+	// @ts-nocheck
 	import { page } from '$app/stores';
+	import Icon from './ui/Icon.svelte';
 	const nav = [
 		{
 			title: 'Home',
-			path: '/'
+			path: '/',
+			icon: 'home'
 		},
 		{
 			title: 'Watchlist',
-			path: '/watchlist'
+			path: '/watchlist',
+			icon: 'bookmark'
+		},
+		{
+			title: 'Search',
+			path: '/search',
+			icon: 'search'
 		}
 	];
 </script>
@@ -15,7 +24,12 @@
 <div class="navbar">
 	<div class="flex">
 		{#each nav as link}
-			<a href={link.path} class:active={$page.url.pathname === link.path}>{link.title}</a>
+			<a href={link.path} class:active={$page.url.pathname === link.path}>
+				<div class="container">
+					<Icon name={link.icon} />
+					{link.title}
+				</div>
+			</a>
 		{/each}
 	</div>
 </div>
@@ -36,11 +50,19 @@
 		max-width: 1076px;
 		margin: 0 auto;
 	}
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.3s ease-in-out;
+		cursor: pointer;
+	}
 	.navbar a {
 		display: block;
 		color: #f2f2f2;
 		text-align: center;
-		padding: 14px 8px;
+		padding: 0.6rem;
 		text-decoration: none;
 		font-size: 17px;
 	}

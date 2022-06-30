@@ -37,13 +37,14 @@
 							/>
 						</div>
 						<div class="details">
-							<h3>{movie.title}</h3>
+							<a href={`/movie/${movie.id}`}><h4>{movie.title}</h4></a>
 
 							<Button
+								icon="x"
 								type="secondary"
 								on:click={() => {
 									removeFromWatched(movie);
-								}}>Remove from watched</Button
+								}}>Remove</Button
 							>
 						</div>
 					</div>

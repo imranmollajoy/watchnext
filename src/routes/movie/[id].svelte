@@ -1,6 +1,8 @@
 <script context="module">
 	import { API_KEY } from '$lib/env';
-	import Container from '../../components/ui/Container.svelte';
+	import { onMount } from 'svelte';
+	import { previousPath } from '$lib/paths';
+	import { goto } from '$app/navigation';
 	let myApiKey;
 
 	if (process.env.NODE_ENV === 'production') {
@@ -29,10 +31,11 @@
 
 <script>
 	// @ts-nocheck
+	import Container from '../../components/ui/Container.svelte';
 	import Button from '../../components/ui/Button.svelte';
 	import Layout from '../../components/ui/Layout.svelte';
 	import Data from '../../stores/PersistantData';
-	import { onMount } from 'svelte';
+	import Icon from '../../components/ui/Icon.svelte';
 	export let movie;
 	let favoriteButtonText = 'Add to favorites';
 	let watchlistButtonText = 'Add to watchlist';
@@ -116,6 +119,14 @@
 <Layout>
 	<Container>
 		<div class="movie">
+			<button
+				sveltekit:noscroll
+				on:click={() => {
+					goto($previousPath);
+				}}
+			>
+				<Icon name="arrow-left" height="3em" width="1em" />
+			</button>
 			<div class="banner">
 				<img
 					src={`https://image.tmdb.org/t/p/w500/` + movie.backdrop_path}
@@ -136,15 +147,17 @@
 			</div>
 			{#if !isWatched}
 				<Button
+					icon="eye"
 					on:click={() => {
 						watchlistPressed();
 					}}>{watchlistButtonText}</Button
 				>
 			{:else}
-				<Button>Seen</Button>
+				<Button icon="eye">Seen</Button>
 			{/if}
 			<Button
 				type="secondary"
+				icon="heart"
 				on:click={() => {
 					favoritePressed();
 				}}>{favoriteButtonText}</Button

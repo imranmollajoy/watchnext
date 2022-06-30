@@ -8,14 +8,6 @@
 		{
 			title: 'Watchlist',
 			path: '/watchlist'
-		},
-		{
-			title: 'Favorites',
-			path: '/favorites'
-		},
-		{
-			title: 'Seen',
-			path: '/watched'
 		}
 	];
 </script>

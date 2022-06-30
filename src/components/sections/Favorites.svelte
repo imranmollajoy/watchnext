@@ -1,13 +1,13 @@
 <script>
 	// @ts-nocheck
 
-	import Container from '../components/ui/Container.svelte';
-	import Layout from '../components/ui/Layout.svelte';
+	import Container from '../ui/Container.svelte';
+	import Layout from '../ui/Layout.svelte';
 
-	import Data from '../stores/PersistantData';
+	import Data from '../../stores/PersistantData';
 	import { onMount } from 'svelte';
-	import Button from '../components/ui/Button.svelte';
-	import '../styles/preferred-list.css';
+	import Button from '../ui/Button.svelte';
+	import '../../styles/preferred-list.css';
 
 	let favorites = [];
 	onMount(() => {

@@ -18,12 +18,12 @@
 <div
 	class="main"
 	in:fly={{
-		y: 100,
+		x: -100,
 		duration: 350,
-		delay: 350 + 100
+		delay: 120 + 100
 	}}
 	out:fade={{
-		duration: 350
+		duration: 120
 	}}
 >
 	<slot />

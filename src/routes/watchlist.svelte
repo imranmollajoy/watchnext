@@ -1,78 +1,23 @@
 <script>
 	// @ts-nocheck
 
-	import Container from '../components/ui/Container.svelte';
-	import Layout from '../components/ui/Layout.svelte';
+	import Tab from '../components/ui/Tab.svelte';
+	import Favorites from '../components/sections/Favorites.svelte';
+	import Watched from '../components/sections/Watched.svelte';
+	import Watchlist from '../components/sections/Watchlist.svelte';
 
-	import Data from '../stores/PersistantData';
-	import { onMount } from 'svelte';
-	import Button from '../components/ui/Button.svelte';
-	import '../styles/preferred-list.css';
-
-	let watchlist = [];
-	onMount(() => {
-		watchlist = $Data.watchlist;
-	});
-
-	function removeFromWatchlist(movie) {
-		const newList = watchlist.filter((item) => item.id !== movie.id);
-		const newData = {
-			...$Data,
-			watchlist: newList
-		};
-		$Data = newData;
-		watchlist = $Data.watchlist;
-	}
-	function addToWatchedList(movie) {
-		const toAdd = {
-			id: movie.id,
-			title: movie.title,
-			poster_path: movie.poster_path
-		};
-		const newList = [...$Data.watched, toAdd];
-		const newData = {
-			...$Data,
-			watched: newList
-		};
-		$Data = newData;
-		removeFromWatchlist(movie);
+	let items = ['Watchlist', 'Watched', 'Favorites'];
+	let selected = items[0];
+	function tabChanged(e) {
+		selected = e.detail;
 	}
 </script>
 
-<Layout>
-	<Container>
-		<div class="list">
-			{#each watchlist as movie (movie.id)}
-				{#if movie.title !== ''}
-					<div class="card">
-						<div class="img-container">
-							<img
-								src={`https://image.tmdb.org/t/p/w500/` + movie.poster_path}
-								alt={`Poster of ${movie.title}`}
-							/>
-						</div>
-						<div class="details">
-							<h3>{movie.title}</h3>
-							<Button
-								on:click={() => {
-									addToWatchedList(movie);
-								}}>Seen</Button
-							>
-							<Button
-								type="secondary"
-								on:click={() => {
-									removeFromWatchlist(movie);
-								}}>Remove from watchlist</Button
-							>
-						</div>
-					</div>
-				{/if}
-			{/each}
-			{#if watchlist.length === 0}
-				<div class="empty-list">
-					<h3>You have not added anything to watch</h3>
-				</div>
-			{/if}
-		</div>
-	</Container>
-</Layout>
+<Tab {items} {selected} on:tabChanged={tabChanged} />
+{#if selected === 'Watchlist'}
+	<Watchlist />
+{:else if selected === 'Watched'}
+	<Watched />
+{:else if selected === 'Favorites'}
+	<Favorites />
+{/if}

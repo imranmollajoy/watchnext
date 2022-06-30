@@ -30,7 +30,7 @@ body {
 	font-weight: 400;
 	min-height: 100vh;
 	margin: 0 auto;
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 .nav-fixer {
 	margin-bottom: 56px;
@@ -51,6 +51,8 @@ h5 {
 	font-weight: 900;
 	line-height: normal;
 	color: var(--clr-accent);
+	margin-top: 1rem;
+	margin-bottom: 0.6rem;
 }
 
 h1 {

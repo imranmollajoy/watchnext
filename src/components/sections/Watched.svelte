@@ -37,7 +37,7 @@
 							/>
 						</div>
 						<div class="details">
-							<a href={`/movie/${movie.id}`}><h4>{movie.title}</h4></a>
+							<a href={`/movie/${movie.id}`}><h5>{movie.title}</h5></a>
 
 							<Button
 								icon="x"
@@ -58,6 +58,3 @@
 		</div>
 	</Container>
 </Layout>
-
-<style>
-</style>

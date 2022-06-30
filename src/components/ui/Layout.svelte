@@ -12,7 +12,6 @@
 		if ($Data.watchlist === undefined) $Data.watchlist = [];
 		if ($Data.watched === undefined) $Data.watched = [];
 		if ($page.routeId !== 'movie/[id]') $previousPath = $page.url.pathname;
-		console.log($previousPath);
 	});
 </script>
 

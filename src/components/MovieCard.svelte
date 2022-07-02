@@ -20,16 +20,13 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 100%;
 		background-color: #fafafa;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.1);
 	}
 
 	img {
-		width: 100%;
-		height: 100%;
+		width: 156px;
 		object-fit: cover;
 		transition: all 0.3s linear;
 		border-radius: 0.5rem;

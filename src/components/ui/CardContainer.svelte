@@ -1,17 +1,32 @@
-<div class="row">
+<script>
+	//@ts-nocheck
+
+	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+
+	//get the .row and put as item var
+	let item;
+	let widthOfItem;
+	onMount(() => {
+		widthOfItem = item.offsetWidth - 20;
+	});
+	function scroll(el) {
+		if (el.deltaY > 0) item.scrollLeft += widthOfItem;
+		else item.scrollLeft -= widthOfItem;
+	}
+</script>
+
+<div class="row" on:mousewheel|preventDefault={scroll} bind:this={item}>
 	<slot />
 </div>
 
 <style>
 	.row {
-		width: 100%;
-		display: grid;
-		/* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
-		/* set grid clomun to 6 in pc, 4 in tablet, 2 in lower screen */
-		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-		justify-content: flex-start;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.4rem;
+		display: flex;
+		overflow-x: auto;
+		overflow-y: hidden;
+		height: calc(156 * 500 / 700) px;
+		gap: 0.6rem;
+		scroll-behavior: smooth;
 	}
 </style>

@@ -12,9 +12,9 @@
 
 <div>
 	<Container>
-		<h2>
+		<h3>
 			{title}
-		</h2>
+		</h3>
 		<CardContainer>
 			{#each data as data, i}
 				<MovieCard {data} />
@@ -25,6 +25,6 @@
 
 <style>
 	div {
-		margin-bottom: 8rem;
+		margin-bottom: 1rem;
 	}
 </style>

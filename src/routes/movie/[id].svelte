@@ -37,8 +37,8 @@
 	import Data from '../../stores/PersistantData';
 	import Icon from '../../components/ui/Icon.svelte';
 	export let movie;
-	let favoriteButtonText = 'Add to favorites';
 	let watchlistButtonText = 'Add to watchlist';
+	let isFavorite = false;
 	let isWatched = false;
 	function addToWatchList() {
 		const toAdd = {
@@ -67,7 +67,6 @@
 			favorites: newList
 		};
 		$Data = newData;
-		favoriteButtonText = 'Remove from favorite';
 	}
 	function removeFromWatchList() {
 		const newList = $Data.watchlist.filter((item) => item.id !== movie.id);
@@ -85,7 +84,6 @@
 			favorites: newList
 		};
 		$Data = newData;
-		favoriteButtonText = 'Add to favorites';
 	}
 
 	function watchlistPressed() {
@@ -101,8 +99,10 @@
 		//check if is in favorites
 		if ($Data.favorites.find((item) => item.id === movie.id)) {
 			removeFromFavorites();
+			isFavorite = false;
 		} else {
 			addToFavorite();
+			isFavorite = true;
 		}
 	}
 	onMount(() => {
@@ -111,7 +111,7 @@
 			watchlistButtonText = 'Remove from watchlist';
 		}
 		if ($Data.favorites.find((item) => item.id === movie.id)) {
-			favoriteButtonText = 'Remove from favorite';
+			isFavorite = true;
 		}
 	});
 </script>
@@ -155,13 +155,24 @@
 			{:else}
 				<Button icon="eye">Seen</Button>
 			{/if}
-			<Button
-				type="secondary"
-				icon="heart"
-				on:click={() => {
-					favoritePressed();
-				}}>{favoriteButtonText}</Button
-			>
+			{#if isFavorite}
+				<Button
+					type="danger"
+					icon="heart"
+					on:click={() => {
+						favoritePressed();
+					}}>Remove</Button
+				>
+			{:else}
+				<Button
+					type="secondary"
+					icon="heart"
+					on:click={() => {
+						favoritePressed();
+					}}>Add</Button
+				>
+			{/if}
+
 			<div class="body">
 				<p>{movie.overview}</p>
 			</div>
@@ -213,6 +224,9 @@
 	}
 	.body {
 		margin-top: 2rem;
+	}
+	.favorite {
+		background-color: var(--clr-accent);
 	}
 	/* media q for mobile */
 	@media (max-width: 425px) {

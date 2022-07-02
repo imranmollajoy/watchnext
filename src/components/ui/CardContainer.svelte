@@ -29,4 +29,7 @@
 		gap: 0.6rem;
 		scroll-behavior: smooth;
 	}
+	.row::-webkit-scrollbar {
+		display: none;
+	}
 </style>

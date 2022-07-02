@@ -8,7 +8,7 @@
 </script>
 
 <div class="movie-card">
-	<a href={`/movie/${data.id}`}>
+	<a href={`/movie/${data.id}`} sveltekit:noscroll>
 		<img src={`https://image.tmdb.org/t/p/w500/` + data.poster_path} alt="" />
 	</a>
 </div>

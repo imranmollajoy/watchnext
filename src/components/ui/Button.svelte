@@ -19,10 +19,11 @@
 	button {
 		border: none;
 		background: none;
-		padding: 0.7rem 1rem;
+		padding: 0.7rem;
 		transition: all 0.3s ease-in-out;
 		border-radius: 0.5rem;
-		margin: 0.3rem 0;
+		margin: 0.2rem 0;
+		z-index: 2;
 	}
 	button:hover {
 		cursor: pointer;
